@@ -15,57 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isValid = true;
     $errors = [];
 
-    // Validate first name
-    if (strlen($firstName) > 255) {
-        $isValid = false;
-        $errors['first-name'] = 'First Name should be a maximum of 255 characters';
-    }
-
-    // Validate last name
-    if (strlen($lastName) > 255) {
-        $isValid = false;
-        $errors['last-name'] = 'Last Name should be a maximum of 255 characters';
-    }
-
-    // Validate email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $isValid = false;
-        $errors['email'] = 'Please enter a valid email address';
-    }
-
-    // Validate phone number
-    if (!preg_match('/^\d{10}$/', $phoneNumber)) {
-        $isValid = false;
-        $errors['phone-number'] = 'Please enter a valid phone number';
-    }
-
+    //more rule specific (company laws)
     if (strlen($password) < 8) {
         $isValid = false;
         $errors['password'] = 'Password should be a maximum of 8 characters or longer';
-    }
-
-    // Validate address
-    if (strlen($address) > 255) {
-        $isValid = false;
-        $errors['address'] = 'Address should be a maximum of 255 characters';
-    }
-
-    // Validate city
-    if (strlen($city) > 255) {
-        $isValid = false;
-        $errors['city'] = 'City should be a maximum of 255 characters';
-    }
-
-    // Validate province
-    if (empty($province)) {
-        $isValid = false;
-        $errors['province'] = 'Please select a province';
-    }
-
-    // Validate country
-    if (empty($country)) {
-        $isValid = false;
-        $errors['country'] = 'Please select a country';
     }
 
     if (!$isValid) {
