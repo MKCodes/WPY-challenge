@@ -64,4 +64,4 @@ Query::run($insert_query);
 INSERT INTO users
             (firstname, lastname, email, password, phone, address, city, province, country)
             VALUES
-            ('John', 'Doe', 'JohnDoe1@gmail.com', HASHPASSWORD,'1234567890', '123 street','Mississauga', 'Ontario', 'Canada');
+            ('John', 'Doe', 'JohnDoe1@gmail.com', 'HASHEDPASSWORD','1234567890', '123 street','Mississauga', 'Ontario', 'Canada');
