@@ -48,11 +48,20 @@ $phone = trim($_POST["phone-number"]);
 $country = trim($_POST["country"]);
 $password = trim($_POST["password"])
 
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
 $insert_query = <<<QUERY 
             INSERT INTO users
             (firstname, lastname, email, password, phone, address, city, province, country)
             VALUES
-            ('$firstname', '$lastname', '$email', '$phone', '$address','$country', '$province','$password', '$city');
+            ('$firstname', '$lastname', '$email', '$hashedPassword', '$phone', '$address', '$city', '$province', '$country');
             QUERY;
 
 Query::run($insert_query);
+
+-----------------------------------------------------------------------------------
+
+INSERT INTO users
+            (firstname, lastname, email, password, phone, address, city, province, country)
+            VALUES
+            ('John', 'Doe', 'JohnDoe1@gmail.com', HASHPASSWORD,'1234567890', '123 street','Mississauga', 'Ontario', 'Canada');
