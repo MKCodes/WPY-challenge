@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('first-name').value;
+            var lastName = document.getElementById('last-name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var phoneNumber = document.getElementById('phone-number').value;
+            var address = document.getElementById('address').value;
+            var city = document.getElementById('city').value;
+            var province = document.getElementById('province').value;
+            var country = document.getElementById('country').value;
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            var phoneNumberRegex = /^\d{10}$/;
+
+            // Validate first name (max 255 characters)
+            if (firstName.length > 255) {
+                alert('First Name should be a maximum of 255 characters');
+                return false;
+            }
+
+            // Validate last name (max 255 characters)
+            if (lastName.length > 255) {
+                alert('Last Name should be a maximum of 255 characters');
+                return false;
+            }
+
+            // Validate email (valid email format)
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            // Validate phone number (10 digits)
+            if (!phoneNumberRegex.test(phoneNumber)) {
+                alert('Please enter a valid phone number');
+                return false;
+            }
+
+            // Validate address (max 255 characters)
+            if (address.length > 255) {
+                alert('Address should be a maximum of 255 characters');
+                return false;
+            }
+
+            // Validate city (max 255 characters)
+            if (city.length > 255) {
+                alert('City should be a maximum of 255 characters');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</head>
+
+<body>
+            <div class="register">
+                <h1 class="text-center">Register</h1>
+            
+                <form class="needs-validation was-validated" onsubmit="return validateForm();" method="POST" action="register.php">
+                    <div class="form-group">
+                        <label class="form-label" for="first-name">First Name</label>
+                        <input class="form-control" type="text" id="first-name" name="first-name" required>
+                        <div class="invalid-feedback">
+                            Please enter your first name
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="last-name">Last Name</label>
+                        <input class="form-control" type="text" id="last-name" name="last-name" required>
+                        <div class="invalid-feedback">
+                            Please enter your last name
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="email">Email address</label>
+                        <input class="form-control" type="email" id="email" name="email" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" name="password" required>
+                        <div class="invalid-feedback">
+                            Please enter your password
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="phone-number">Phone Number</label>
+                        <input class="form-control" type="tel" id="phone-number" name="phone-number" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid phone number
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="address">Address</label>
+                        <input class="form-control" type="text" id="address" name="address" required>
+                        <div class="invalid-feedback">
+                            Please enter your address
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="city">City</label>
+                        <input class="form-control" type="text" id="city" name="city" required>
+                        <div class="invalid-feedback">
+                            Please enter your city
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="province">Province</label>
+                        <select class="form-control" id="province" name="province" required>
+                            <option value="" disabled selected>Select Province</option>
+                            <option value="AB">Alberta</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="NB">New Brunswick</option>
+                            <option value="NL">Newfoundland and Labrador</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="ON">Ontario</option>
+                            <option value="PE">Prince Edward Island</option>
+                            <option value="QC">Quebec</option>
+                            <option value="SK">Saskatchewan</option>
+                            <option value="NT">Northwest Territories</option>
+                            <option value="NU">Nunavut</option>
+                            <option value="YT">Yukon</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a province
+                        </div>
+                    </div>
+                    <div class="form-group was-validated">
+                        <label class="form-label" for="country">Country</label>
+                        <select class="form-control" id="country" name="country" required>
+                            <option value="" disabled selected>Select Country</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a country
+                        </div>
+                    </div>
+                    <input class="btn btn-success w-100" type="submit" value="REGISTER">
+                </form>
+
+            </div>
+                
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+
+- suppose this is in a different file -
+
+class Query {
+    /*
+    This class provides a quick static interface to perform an SQL query.
+    */
+    public static function run($sql) {
+        $db_host = 'localhost';
+        $db_user = 'root';
+        $db_pass = '';
+        $db_name = ''; -> db name you want
+        $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+        $result = $mysqli->query($sql);
+        $mysqli->close();
+        return $result;
+    }
+}
+-----------------------------------------------------------------------------------
+
+
+$sql = "CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    province VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL
+)";
+
+if ($conn->query($sql) === true) {
+    echo "Table created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+$firstname = trim($_POST["first-name"]);
+$lastname = trim($_POST["last-name"]);
+$email = trim($_POST["email"]);
+$address = trim($_POST["address"]);
+$province = trim($_POST["province"]);
+$city = trim($_POST["city"]);
+$phone = trim($_POST["phone-number"]);
+$country = trim($_POST["country"]);
+$password = trim($_POST["password"])
+
+$insert_query = <<<QUERY 
+            INSERT INTO users
+            (firstname, lastname, email, password, phone, address, city, province, country)
+            VALUES
+            ('$firstname', '$lastname', '$email', '$phone', '$address','$country', '$province','$password', '$city');
+            QUERY;
+
+Query::run($insert_query);
